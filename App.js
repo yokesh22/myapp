@@ -21,7 +21,7 @@ import {
 export default function App() {
   return(
     <View style={styles.container}>
-      <Text>Hello World</Text>
+      <Text>This is my first commit</Text>
     </View>
   );
 }
