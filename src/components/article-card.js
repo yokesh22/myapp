@@ -22,7 +22,7 @@ const ArticleCard = () => {
             borderRadius: 20 / 2
           }}
         />
-        <Text style = {{paddingHorizontal:10}}>
+        <Text style = {{paddingHorizontal:10,color: 'white'}}>
             Jacob Bennet in Level Up Coding
         </Text>
         </View>
@@ -39,17 +39,17 @@ const ArticleCard = () => {
           }}/>
         </View>
         <View style = {styles.date}>
-            <Text>Nov 8</Text>
-            <Text style = {{paddingLeft:10}}>~ 10 min read</Text>
+            <Text style = {{paddingLeft:10,color: '#7d7d7d',}}>Nov 8</Text>
+            <Text style = {{paddingLeft:10,color: '#7d7d7d',}}>~ 10 min read</Text>
             <Ionic style = {{paddingLeft:10}} name = "ios-star" color = "#ebab34" size = {15}/>
 
         </View>
         <View style = {styles.category}>
             <Text>Selected for you</Text>
             <View style = {styles.threeIcons}>
-                <MaterialIcons style = {{paddingHorizontal:5}} name = "favorite-outline" size = {30}/>
-                <Ionic name = "remove-circle-outline" size = {30}/>
-                <IonicE name = "dots-three-vertical" size = {25} />
+                <MaterialIcons style = {{paddingHorizontal:5}} name = "favorite-outline" size = {30} color = '#7d7d7d'/>
+                <Ionic name = "remove-circle-outline" size = {30} color = '#7d7d7d'/>
+                <IonicE name = "dots-three-vertical" size = {25} color = '#7d7d7d' />
             </View>
         </View>
         </View>
@@ -61,7 +61,6 @@ export default ArticleCard
 
 const styles = StyleSheet.create({
     container: {
-        flex:1,
         // width: '100%',
         // height: '50%',
         borderBottomWidth:1,
@@ -71,7 +70,7 @@ const styles = StyleSheet.create({
     },
     container1: {
         paddingHorizontal: 10 ,
-        flex:0
+        
     },
     author: {
         flexDirection: 'row',

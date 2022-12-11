@@ -40,11 +40,11 @@ const MainContainer = () => {
             headerShown: false,
             tabBarShowLabel: false,
             tabBarStyle:{
-                height: Dimensions.get('window').width *0.2,
+                height: Dimensions.get('window').width *0.15,
                  backgroundColor: 'black',
                  paddingHorizontal: 5,
-                 paddingBottom: 10,
-                 position: 'absolute',
+                 paddingBottom: 5,
+                //  position: 'absolute',
                  }
         })}
         
