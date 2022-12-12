@@ -6,6 +6,7 @@ import {
   ScrollView,
   FlatList,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 import {Dimensions} from 'react-native';
 import Ionic from 'react-native-vector-icons/Ionicons';
@@ -17,8 +18,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-
-
 const cardDetails = [
   {
     key: '1',
@@ -27,6 +26,7 @@ const cardDetails = [
     date: 'Nov 8',
     length: '~ 10 min read',
     cat: 'Selected for you',
+    img: 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png',
   },
   {
     key: '2',
@@ -35,14 +35,16 @@ const cardDetails = [
     date: 'Dec 30,2021',
     length: '~ 5 min read',
     cat: 'Based on your reading',
+    img: 'https://cdn.mos.cms.futurecdn.net/Vp9WvV7YKdH4k8sKRePcE8.jpg',
   },
   {
     key: '3',
     author: 'Kiran in React Native',
     title: 'RoadMap for React Native in 2022',
     date: 'Nov 3',
-    length: '~ 10 min read',
+    length: '~ 10 min read', 
     cat: 'Popular on Medium',
+    img: 'https://www.datocms-assets.com/45470/1631026680-logo-react-native.png'
   },
   {
     key: '4',
@@ -51,6 +53,7 @@ const cardDetails = [
     date: 'Nov 14',
     length: '~ 4 min read',
     cat: 'Selected for you',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1200px-PHP-logo.svg.png'
   },
   {
     key: '5',
@@ -59,6 +62,7 @@ const cardDetails = [
     date: '2 days ago',
     length: '~ 3 min read',
     cat: 'Popular on Medium',
+    img: 'https://www.feedough.com/wp-content/uploads/2020/08/what-is-marketing.png'
   },
   {
     key: '6',
@@ -67,6 +71,7 @@ const cardDetails = [
     date: 'Nov 27',
     length: '~ 6 min read',
     cat: 'Software Developement',
+    img: 'https://w10.naukri.com/mailers/2021/naukri-learning/oct/27oct-v2/What-is-Android-Developer.jpg'
   },
   {
     key: '7',
@@ -75,13 +80,12 @@ const cardDetails = [
     date: 'Jun 8',
     length: '~ 3 min read',
     cat: 'Selected for you',
+    img: 'https://miro.medium.com/max/653/1*27GzmuwyW2dRA2KwzP6OEw.png'
   },
 ];
 
-class HomeScreen extends React.Component {
-  render() {
-    const card = ({item}) => {};
-
+const HomeScreen = ({navigation})=>{
+  
     return (
       <View style={{flex: 1, backgroundColor: 'black'}}>
         <View style={styles.container1}>
@@ -89,7 +93,7 @@ class HomeScreen extends React.Component {
             <Text style={{color: 'white', fontWeight: 'bold', fontSize: 20}}>
               Home
             </Text>
-            <Ionic name="notifications-outline" color="white" size={25} />
+            <Ionic style = {{paddingRight:5}} name="notifications-outline" color="white" size={25} />
           </View>
         </View>
         <View style={styles.container2}>
@@ -97,7 +101,18 @@ class HomeScreen extends React.Component {
             data={cardDetails}
             renderItem={({item}) => {
               return (
-                <View style={styles.container}>
+                <TouchableOpacity onPress = { () => navigation.navigate(
+                  'Article',{
+                    key: item.key,
+                    author: item.author,
+                    title: item.title,
+                    date: item.date,
+                    length: item.length,
+                    cat: item.cat,
+                    img: item.img,
+                    }
+                  )}>
+                  <View style={styles.container}>
                   <View style={styles.container1}>
                     <View style={styles.author}>
                       <Image
@@ -119,7 +134,7 @@ class HomeScreen extends React.Component {
                         style={{
                           color: '#7d7d7d',
                           textAlignVertical: 'center',
-                          flex: 1,
+                          flex: 2,
                           paddingRight: 22,
                           fontSize: 18,
                           fontWeight: 'bold',
@@ -127,18 +142,17 @@ class HomeScreen extends React.Component {
                        {item.title}
                       </Text>
                       <Image
-                        style={{flex: 2}}
-                        source={{
-                          uri: 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png',
+                        style={{flex: 1}}
+                        source={{uri: item.img,
+                        // width: 100,
+                        // height: 70,
+                        
                         }}
-                        style={{
-                          width: '30%',
-                          height: '95%',
-                        }}
+                        
                       />
                     </View>
                     <View style={styles.date}>
-                      <Text style={{paddingLeft: 10, color: '#7d7d7d'}}>
+                      <Text style={{ color: '#7d7d7d'}}>
                         {item.date}
                       </Text>
                       <Text style={{paddingLeft: 10, color: '#7d7d7d'}}>
@@ -174,6 +188,7 @@ class HomeScreen extends React.Component {
                     </View>
                   </View>
                 </View>
+                </TouchableOpacity>
               );
             }}
           />
@@ -182,7 +197,7 @@ class HomeScreen extends React.Component {
       </View>
     );
   }
-}
+
 
 export default HomeScreen;
 
@@ -204,7 +219,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 10,
+    paddingVertical: 10,
   },
 
   // card style................
@@ -218,7 +233,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 0,
   },
   container1: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
   },
   author: {
     flexDirection: 'row',

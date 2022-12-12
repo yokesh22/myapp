@@ -5,12 +5,14 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionic from 'react-native-vector-icons/Ionicons';
 import { Dimensions } from 'react-native';
 
+// import Navigator from './routes/home-route';
 //screens
 
 import HomeScreen from './screens/home-page';
 import SavedScreen from './screens/saved-page';
 import SearchScreen from './screens/search-page';
 import SettingScreen from './screens/settings-page';
+import { HomeStack, HomeStackScreen } from './routes/home-stack';
 
 
 const Tab = createBottomTabNavigator();
@@ -24,7 +26,7 @@ const MainContainer = () => {
             ({route}) => ({
             tabBarIcon: ({focused,size,color})=>{
                 let iconName;
-                if(route.name === "Home"){
+                if(route.name === "Home1"){
                     iconName = focused ? 'home' : 'home-outline';
                 }else if(route.name === "Search"){
                     iconName = focused ? 'search' : 'search-outline';
@@ -50,7 +52,7 @@ const MainContainer = () => {
         
         
         >
-            <Tab.Screen name = "Home" component = {HomeScreen} />
+            <Tab.Screen name = "Home1" component = {HomeStackScreen} />
             <Tab.Screen name = "Search" component = {SearchScreen} />
             <Tab.Screen name = "Saved" component = {SavedScreen} />
             <Tab.Screen name = "Settings" component = {SettingScreen} />
