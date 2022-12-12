@@ -1,9 +1,10 @@
 import * as React from 'react';
 import {View,Text} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionic from 'react-native-vector-icons/Ionicons';
 import { Dimensions } from 'react-native';
+// import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 
 // import Navigator from './routes/home-route';
 //screens
@@ -16,6 +17,15 @@ import { HomeStack, HomeStackScreen } from './routes/home-stack';
 
 
 const Tab = createBottomTabNavigator();
+const getRouteName = (route) => {
+    const routeName = getFocusedRouteNameFromRoute(route)
+    console.log(routeName);
+    if(routeName?.includes('Article')){
+        return 'none';
+    }else{
+        return 'flex';
+    }
+}
 
 
 const MainContainer = () => {
@@ -52,7 +62,7 @@ const MainContainer = () => {
         
         
         >
-            <Tab.Screen name = "Home1" component = {HomeStackScreen} />
+            <Tab.Screen name = "Home1" component = {HomeStackScreen} options = {({route}) => ({tabBarStyle: {display: getRouteName(route), backgroundColor: 'black',}})} />
             <Tab.Screen name = "Search" component = {SearchScreen} />
             <Tab.Screen name = "Saved" component = {SavedScreen} />
             <Tab.Screen name = "Settings" component = {SettingScreen} />
