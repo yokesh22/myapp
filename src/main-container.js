@@ -14,6 +14,7 @@ import SavedScreen from './screens/saved-page';
 import SearchScreen from './screens/search-page';
 import SettingScreen from './screens/settings-page';
 import { HomeStack, HomeStackScreen } from './routes/home-stack';
+import { SearchStackScreen } from './routes/search-stack';
 
 
 const Tab = createBottomTabNavigator();
@@ -38,7 +39,7 @@ const MainContainer = () => {
                 let iconName;
                 if(route.name === "Home1"){
                     iconName = focused ? 'home' : 'home-outline';
-                }else if(route.name === "Search"){
+                }else if(route.name === "Search1"){
                     iconName = focused ? 'search' : 'search-outline';
                 }else if(route.name === "Saved"){
                     iconName = focused ? 'save' : 'save-outline';
@@ -63,7 +64,7 @@ const MainContainer = () => {
         
         >
             <Tab.Screen name = "Home1" component = {HomeStackScreen} options = {({route}) => ({tabBarStyle: {display: getRouteName(route), backgroundColor: 'black',}})} />
-            <Tab.Screen name = "Search" component = {SearchScreen} />
+            <Tab.Screen name = "Search1" component = {SearchStackScreen} />
             <Tab.Screen name = "Saved" component = {SavedScreen} />
             <Tab.Screen name = "Settings" component = {SettingScreen} />
         </Tab.Navigator>

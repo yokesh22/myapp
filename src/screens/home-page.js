@@ -42,9 +42,9 @@ const cardDetails = [
     author: 'Kiran in React Native',
     title: 'RoadMap for React Native in 2022',
     date: 'Nov 3',
-    length: '~ 10 min read', 
+    length: '~ 10 min read',
     cat: 'Popular on Medium',
-    img: 'https://www.datocms-assets.com/45470/1631026680-logo-react-native.png'
+    img: 'https://www.datocms-assets.com/45470/1631026680-logo-react-native.png',
   },
   {
     key: '4',
@@ -53,7 +53,7 @@ const cardDetails = [
     date: 'Nov 14',
     length: '~ 4 min read',
     cat: 'Selected for you',
-    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1200px-PHP-logo.svg.png'
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1200px-PHP-logo.svg.png',
   },
   {
     key: '5',
@@ -62,7 +62,7 @@ const cardDetails = [
     date: '2 days ago',
     length: '~ 3 min read',
     cat: 'Popular on Medium',
-    img: 'https://www.feedough.com/wp-content/uploads/2020/08/what-is-marketing.png'
+    img: 'https://www.feedough.com/wp-content/uploads/2020/08/what-is-marketing.png',
   },
   {
     key: '6',
@@ -71,7 +71,7 @@ const cardDetails = [
     date: 'Nov 27',
     length: '~ 6 min read',
     cat: 'Software Developement',
-    img: 'https://w10.naukri.com/mailers/2021/naukri-learning/oct/27oct-v2/What-is-Android-Developer.jpg'
+    img: 'https://w10.naukri.com/mailers/2021/naukri-learning/oct/27oct-v2/What-is-Android-Developer.jpg',
   },
   {
     key: '7',
@@ -80,29 +80,34 @@ const cardDetails = [
     date: 'Jun 8',
     length: '~ 3 min read',
     cat: 'Selected for you',
-    img: 'https://miro.medium.com/max/653/1*27GzmuwyW2dRA2KwzP6OEw.png'
+    img: 'https://miro.medium.com/max/653/1*27GzmuwyW2dRA2KwzP6OEw.png',
   },
 ];
 
-const HomeScreen = ({navigation})=>{
-  
-    return (
-      <View style={{flex: 1, backgroundColor: 'black'}}>
-        <View style={styles.container1}>
-          <View style={styles.header}>
-            <Text style={{color: 'white', fontWeight: 'bold', fontSize: 20}}>
-              Home
-            </Text>
-            <Ionic style = {{paddingRight:5}} name="notifications-outline" color="white" size={25} />
-          </View>
+const HomeScreen = ({navigation}) => {
+  return (
+    <View style={{flex: 1, backgroundColor: 'black'}}>
+      <View style={styles.container1}>
+        <View style={styles.header}>
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 20}}>
+            Home
+          </Text>
+          <Ionic
+            style={{paddingRight: 5}}
+            name="notifications-outline"
+            color="white"
+            size={25}
+          />
         </View>
-        <View style={styles.container2}>
-          <FlatList
-            data={cardDetails}
-            renderItem={({item}) => {
-              return (
-                <TouchableOpacity onPress = { () => navigation.navigate(
-                  'Article',{
+      </View>
+      <View style={styles.container2}>
+        <FlatList
+          data={cardDetails}
+          renderItem={({item}) => {
+            return (
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('Article', {
                     key: item.key,
                     author: item.author,
                     title: item.title,
@@ -110,9 +115,9 @@ const HomeScreen = ({navigation})=>{
                     length: item.length,
                     cat: item.cat,
                     img: item.img,
-                    }
-                  )}>
-                  <View style={styles.container}>
+                  })
+                }>
+                <View style={styles.container}>
                   <View style={styles.container1}>
                     <View style={styles.author}>
                       <Image
@@ -139,22 +144,19 @@ const HomeScreen = ({navigation})=>{
                           fontSize: 18,
                           fontWeight: 'bold',
                         }}>
-                       {item.title}
+                        {item.title}
                       </Text>
                       <Image
                         style={{flex: 1}}
-                        source={{uri: item.img,
-                        // width: 100,
-                        // height: 70,
-                        
+                        source={{
+                          uri: item.img,
+                          // width: 100,
+                          // height: 70,
                         }}
-                        
                       />
                     </View>
                     <View style={styles.date}>
-                      <Text style={{ color: '#7d7d7d'}}>
-                        {item.date}
-                      </Text>
+                      <Text style={{color: '#7d7d7d'}}>{item.date}</Text>
                       <Text style={{paddingLeft: 10, color: '#7d7d7d'}}>
                         {item.length}
                       </Text>
@@ -166,7 +168,7 @@ const HomeScreen = ({navigation})=>{
                       />
                     </View>
                     <View style={styles.category1}>
-                      <Text style = {{color: '#7d7d7d'}}>{item.cat}</Text>
+                      <Text style={{color: '#7d7d7d'}}>{item.cat}</Text>
                       <View style={styles.threeIcons}>
                         <MaterialIcons
                           style={{paddingHorizontal: 5}}
@@ -188,16 +190,14 @@ const HomeScreen = ({navigation})=>{
                     </View>
                   </View>
                 </View>
-                </TouchableOpacity>
-              );
-            }}
-          />
-        </View>
-       
+              </TouchableOpacity>
+            );
+          }}
+        />
       </View>
-    );
-  }
-
+    </View>
+  );
+};
 
 export default HomeScreen;
 
@@ -265,6 +265,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingBottom: 10 ,
+    paddingBottom: 10,
   },
 });
