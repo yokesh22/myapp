@@ -1,10 +1,11 @@
 import React from 'react';
 import MainContainer from './src/main-container';
 import { NavigationContainer } from '@react-navigation/native';
+import SignUp from './src/signUp-page';
 
 function App() {
   return(
-      <MainContainer/>
+      <SignUp/>
   );
 }
 

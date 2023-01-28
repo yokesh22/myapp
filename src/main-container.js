@@ -68,8 +68,6 @@ const MainContainer = () => {
             <Tab.Screen name = "Saved" component = {SavedScreen} />
             <Tab.Screen name = "Settings" component = {SettingScreen} />
         </Tab.Navigator>
-                
-               
     </NavigationContainer>
   )
 }
